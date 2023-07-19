@@ -1,9 +1,9 @@
 import { SafeAreaView, Text } from "react-native";
 
-export default function Home() {
+export default function SelectChurch() {
   return (
     <SafeAreaView>
-      <Text>Home page</Text>
+      <Text>Select church</Text>
     </SafeAreaView>
   );
 }
