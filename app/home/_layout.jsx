@@ -6,11 +6,20 @@ import { Tabs } from "expo-router";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default function HomeLayout() {
+  const tabStyle = {
+    tabBarStyle: {
+      height: Platform.OS == "ios" ? 90 : 60,
+    },
+  };
   return (
-    <Tabs safeAreaInsets={{ bottom: Platform.select({ android: 4 }) }}>
+    <Tabs
+      safeAreaInsets={{ bottom: Platform.select({ android: 4 }) }}
+      sceneContainerStyle={{ backgroundColor: colors.surface.light }}
+    >
       <Tabs.Screen
         name="index"
         options={{
+          ...tabStyle,
           href: "/home",
           headerLeft: (props) => (
             <TouchableOpacity
@@ -68,9 +77,10 @@ export default function HomeLayout() {
         }}
       />
       <Tabs.Screen
-        name="favourites"
+        name="favorites"
         options={{
-          href: "/home/favourites",
+          ...tabStyle,
+          href: "/home/favorites",
           headerTitle: (props) => (
             <Text
               style={[{ ...props.style }, textStyles.body, textStyles.bodyLg]}
@@ -116,6 +126,7 @@ export default function HomeLayout() {
       <Tabs.Screen
         name="more"
         options={{
+          ...tabStyle,
           href: "/home/more",
           headerTitle: (props) => (
             <Text
