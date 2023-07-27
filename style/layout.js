@@ -14,8 +14,8 @@ export const layoutStyle = StyleSheet.create({
     flexDirection: "column-reverse",
   },
 
-  alignCenter: {
-    alignItems: "center",
+  alignStart: {
+    alignItems: "flex-start",
   },
 
   justifyCenter: {
@@ -114,6 +114,10 @@ export const spacingStyle = StyleSheet.create({
 
   px28: {
     paddingHorizontal: 24,
+  },
+
+  py4: {
+    paddingVertical: 4,
   },
 
   // padding vertical
