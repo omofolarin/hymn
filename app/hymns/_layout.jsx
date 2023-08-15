@@ -1,13 +1,23 @@
-import { Header, HeaderBackButton } from "@react-navigation/elements";
-import { Platform, Pressable, Text, Touchable, View } from "react-native";
-import { Slot, Stack, useRouter, useSearchParams } from "expo-router";
+import * as Sharing from "expo-sharing";
+
+import { Platform, Pressable, Text, View } from "react-native";
+import { Stack, usePathname, useRouter, useSearchParams } from "expo-router";
 import { layoutStyle, textStyles } from "../../style";
 
+import Constants from "expo-constants";
+import { ExecutionEnvironment } from "expo-constants";
+import { HeaderBackButton } from "@react-navigation/elements";
 import { SvgXml } from "react-native-svg";
 
 export default function HymnLayout() {
   const router = useRouter();
+  const pathname = usePathname();
   const searchParams = useSearchParams();
+  const hymnTitle = `${
+    searchParams["hymn"]
+      ? searchParams["hymn"].split("-").join(" ")
+      : "Current hymn"
+  }`;
 
   return (
     <Stack
@@ -52,7 +62,22 @@ export default function HymnLayout() {
                     `}
               />
             </Pressable>
-            <Pressable style={{ width: 30 }}>
+            <Pressable
+              style={{ width: 30 }}
+              onPress={async () => {
+                try {
+                  console.log(Sharing);
+                  const url = `https://`;
+
+                  await Sharing.shareAsync(pathname, {
+                    dialogTitle: "Let's hymn together",
+                    mimeType: "text/plain",
+                  });
+                } catch (e) {
+                  console.log(e);
+                }
+              }}
+            >
               <SvgXml
                 xml={`<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M4.93164 12.1731V20.1731C4.93164 20.7035 5.14235 21.2122 5.51743 21.5873C5.8925 21.9624 6.40121 22.1731 6.93164 22.1731H18.9316C19.4621 22.1731 19.9708 21.9624 20.3459 21.5873C20.7209 21.2122 20.9316 20.7035 20.9316 20.1731V12.1731" stroke="#7447F5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

@@ -13,6 +13,12 @@ export default function Hymn() {
   const searchParams = useSearchParams();
   const hymnId = Number(searchParams["id"]);
   const hymn = hymns[hymnId] ?? {};
+  const hymnTitle = `${
+    searchParams["hymn"]
+      ? searchParams["hymn"].split("-").join(" ")
+      : "Current hymn"
+  }`;
+
   let verseCount = hymn.data.map((item, i) => item.type == "verse").length;
 
   let currentVerseId = 1;
@@ -69,11 +75,7 @@ export default function Hymn() {
     <SafeAreaView style={{ flex: 1 }}>
       <Header
         headerTitleAlign="left"
-        title={`${
-          searchParams["hymn"]
-            ? searchParams["hymn"].split("-").join(" ")
-            : "Current hymn"
-        }`}
+        title={hymnTitle}
         headerTitleStyle={[
           spacingStyle.py4,
           { fontWeight: "500", fontSize: 20 },
