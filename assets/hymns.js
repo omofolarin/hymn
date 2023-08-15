@@ -1,13 +1,3 @@
-export default data = [
-  { title: "Amazing Grace", data: amazingGrace },
-  { title: "How Great Thou Art", data: howGreatThouArt },
-  { title: "In Christ Alone", data: inChristAlone },
-  { title: "Blessed Assurance", data: blessedAssurance },
-  { title: "It's well with my soul", data: itsWellWithMySoul },
-  { title: "Holy, Holy, Holy", data: holyHolyHoly },
-  { title: "What a Friend We Have In Jesus", whatAFriendWeHaveInJesus },
-];
-
 const amazingGrace = [
   {
     type: "chorus",
@@ -386,4 +376,70 @@ const whatAFriendWeHaveInJesus = [
       "Thou wilt find a solace there.",
     ],
   },
+];
+
+const howDeepTheFatherLoveForUs = [
+  {
+    type: "verse",
+    lines: [],
+  },
+];
+
+const beThouMyVision = [];
+
+const theOldRuggedCross = [];
+
+const victoryInJesus = [];
+
+const oWorshipTheKing = [];
+
+const comeThouFountOfEveryBlessing = [];
+
+const beforeTheThroneOfGodAbove = [];
+
+const toGodBeTheGlory = [];
+
+const crownHimWithManyCrowns = [];
+
+const allCreaturesOfOurGodAndKing = [];
+
+const rockOfAges = [];
+
+const jesusPaidItAll = [];
+
+export default data = [
+  { title: "Amazing Grace", data: amazingGrace },
+  { title: "How Great Thou Art", data: howGreatThouArt },
+  { title: "In Christ Alone", data: inChristAlone },
+  { title: "Blessed Assurance", data: blessedAssurance },
+  { title: "It's well with my soul", data: itsWellWithMySoul },
+  { title: "Holy, Holy, Holy", data: holyHolyHoly },
+  { title: "What a Friend We Have In Jesus", data: whatAFriendWeHaveInJesus },
+  {
+    title: "How Deep the Father's Love For Us",
+    data: howDeepTheFatherLoveForUs,
+  },
+  { title: "Be Thou My Vision", data: beThouMyVision },
+  { title: "The Old Rugged Cross", data: theOldRuggedCross },
+  { title: "Victory In Jesus", data: victoryInJesus },
+  { title: "O Worship the King", data: oWorshipTheKing },
+  {
+    title: "Come Thou Fount Of Every Blessing",
+    data: comeThouFountOfEveryBlessing,
+  },
+  {
+    title: "Before the Throne Of God Above",
+    data: beforeTheThroneOfGodAbove,
+  },
+  { title: "To God Be the Glory", data: toGodBeTheGlory },
+  { title: "Crown Him with Many Crowns", data: crownHimWithManyCrowns },
+  {
+    title: "All Creatures of Our God and King",
+    data: allCreaturesOfOurGodAndKing,
+  },
+  {
+    title: "Rock of Ages",
+    data: rockOfAges,
+  },
+  { title: "Jesus Paid it All", data: jesusPaidItAll },
 ];

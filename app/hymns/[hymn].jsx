@@ -1,8 +1,9 @@
 import { SafeAreaView, ScrollView, Text, View } from "react-native";
 import { layoutStyle, spacingStyle, textStyles } from "../../style";
+import { useRouter, useSearchParams } from "expo-router";
 
 import { Header } from "@react-navigation/elements";
-import { useSearchParams } from "expo-router";
+import hymns from "../../assets/hymns";
 
 String.prototype.toCapitalize = function () {
   return this.charAt(0).toUpperCase() + this.slice(1);
@@ -10,95 +11,19 @@ String.prototype.toCapitalize = function () {
 
 export default function Hymn() {
   const searchParams = useSearchParams();
-  let totalVerses = 0;
-  const howGreatThouArt = [
-    {
-      type: "verse",
-      lines: [
-        "O Lord my God, when I in awesome wonder",
-        "Consider all the worlds Thy hands have made",
-        "I see the stars, I hear the rolling thunder",
-        "Thy power throughout the universe displayed",
-      ],
-    },
+  const hymnId = Number(searchParams["id"]);
+  const hymn = hymns[hymnId] ?? {};
+  let verseCount = hymn.data.map((item, i) => item.type == "verse").length;
 
-    {
-      type: "chorus",
-      lines: [
-        "Then sings my soul, my Savior God, to Thee",
-        "How great Thou art, how great Thou art",
-        "Then sings my soul, my Savior God, to Thee",
-        "How great Thou art, how great Thou art",
-      ],
-    },
+  let currentVerseId = 1;
 
-    {
-      type: "verse",
-      lines: [
-        "When through the woods, and forest glades I wander",
-        "And hear the birds sing sweetly in the trees",
-        "When I look down, from lofty mountain grandeur",
-        "And see the brook, and feel the gentle breeze",
-      ],
-    },
-
-    {
-      type: "chorus",
-      lines: [
-        "Then sings my soul, my Savior God, to Thee",
-        "How great Thou art, how great Thou art",
-        "Then sings my soul, my Savior God, to Thee",
-        "How great Thou art, how great Thou art",
-      ],
-    },
-
-    {
-      type: "verse",
-      lines: [
-        "And when I think that God, His Son not sparing",
-        "Sent Him to die, I scarce can take it in",
-        "That on the cross, my burden gladly bearing",
-        "He bled and died to take away my sin",
-      ],
-    },
-
-    {
-      type: "chorus",
-      lines: [
-        "Then sings my soul, my Savior God, to Thee",
-        "How great Thou art, how great Thou art",
-        "Then sings my soul, my Savior God, to Thee",
-        "How great Thou art, how great Thou art",
-      ],
-    },
-
-    {
-      type: "verse",
-      lines: [
-        "When Christ shall come with shout of acclamation",
-        "And take me home, what joy shall fill my heart",
-        "Then I shall bow in humble adoration",
-        "And there proclaim, my God, how great Thou art",
-      ],
-    },
-
-    {
-      type: "chorus",
-      lines: [
-        "Then sings my soul, my Savior God, to Thee",
-        "How great Thou art, how great Thou art",
-        "Then sings my soul, my Savior God, to Thee",
-        "How great Thou art, how great Thou art",
-      ],
-    },
-  ].map((v, i) => {
-    if (v.type == "verse") {
-      totalVerses += 1;
-      return { ...v, id: totalVerses };
-    } else {
-      return v;
+  for (let index = 0; index < verseCount; index++) {
+    const element = hymn.data[index];
+    if (element.type == "verse") {
+      hymn["data"][index]["id"] = currentVerseId;
+      currentVerseId++;
     }
-  });
+  }
 
   const amazingGrace = [
     {
@@ -155,7 +80,7 @@ export default function Hymn() {
         ]}
       />
       <ScrollView>
-        {howGreatThouArt.map((verse, i) => {
+        {hymn.data.map((verse, i) => {
           return (
             <View
               key={i.toString()}

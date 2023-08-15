@@ -9,7 +9,6 @@ export default function Layout() {
   const pathName = usePathname();
   const router = useRouter();
 
-  console.log(pathName);
   return (
     <AppFonts>
       {pathName === "/settings" && (
