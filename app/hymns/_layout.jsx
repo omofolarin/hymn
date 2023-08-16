@@ -1,5 +1,3 @@
-import * as Sharing from "expo-sharing";
-
 import { Platform, Pressable, Text, View } from "react-native";
 import { Stack, usePathname, useRouter, useSearchParams } from "expo-router";
 import { layoutStyle, textStyles } from "../../style";
@@ -7,6 +5,7 @@ import { layoutStyle, textStyles } from "../../style";
 import Constants from "expo-constants";
 import { ExecutionEnvironment } from "expo-constants";
 import { HeaderBackButton } from "@react-navigation/elements";
+import Share from "react-native-share";
 import { SvgXml } from "react-native-svg";
 
 export default function HymnLayout() {
@@ -66,12 +65,9 @@ export default function HymnLayout() {
               style={{ width: 30 }}
               onPress={async () => {
                 try {
-                  console.log(Sharing);
-                  const url = `https://`;
-
-                  await Sharing.shareAsync(pathname, {
-                    dialogTitle: "Let's hymn together",
-                    mimeType: "text/plain",
+                  await Share.open({
+                    subject: "say hello",
+                    message: "say hello",
                   });
                 } catch (e) {
                   console.log(e);

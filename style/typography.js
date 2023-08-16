@@ -9,7 +9,7 @@ export const textStyles = StyleSheet.create({
     fontFamily: "Montserrat-Black",
     fontSize: 32,
     fontStyle: "normal",
-    fontWeight: 700,
+    fontWeight: "700",
   },
 
   headline: {},
